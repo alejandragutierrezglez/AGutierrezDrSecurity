@@ -1,0 +1,146 @@
+﻿@model ML.Persona
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h5>Ingrese los datos del nuevo usuario:</h5>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("Form", "Persona", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-12" style="display: none;">
+            @Html.TextBoxFor(model => model.IdPersona, new { @class = "hidden form-control", autocomplete = "off" })
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.Nombre)
+                <div class="input-group">
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @id = "Nombre", @placeholder = "Ejemp: Francisco", autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.Nombre, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.PrimerApellido)
+                <div class="input-group">
+                    @Html.TextBoxFor(model => model.PrimerApellido, new { @class = "form-control", @id = "PrimerApellido", @placeholder = "Ejemp: Martinez", autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.PrimerApellido, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.SegundoApellido)
+                <div class="input-group">
+                    @Html.TextBoxFor(model => model.SegundoApellido, new { @class = "form-control", @id = "SegundoApellido", @placeholder = "Ejemp: Ramirez", autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.SegundoApellido, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.FechaNacimiento)
+                <div class="input-group">
+                    @Html.TextBoxFor(model => model.FechaNacimiento, new { @class = "form-control", @id = "FechaNacimiento", @placeholder = "Ejemp: YYYY-MM-DD", autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.FechaNacimiento, null, new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-12">
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.Sexo)
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.Sexo, new { @class = "form-control", @id = "Sexo", @placeholder = "Ejemp: H o M", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.Sexo, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.EstadoNacimiento)
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.EstadoNacimiento, new { @class = "form-control", @id = "EstadoNacimiento", @placeholder = "Aguascalientes", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.EstadoNacimiento, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.Telefono)
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control", @id = "Telefono", @placeholder = "Ejemp: 5555555555", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.Telefono, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.CURP)
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.CURP, new { @class = "form-control", @id = "CURP", disabled = "true" })
+                        @Html.ValidationMessageFor(model => model.CURP, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.Direccion.EstadoCiudad)
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.Direccion.EstadoCiudad, new { @class = "form-control", @id = "EstadoCiudad", @placeholder = "CDMX", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.Direccion.EstadoCiudad, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.Direccion.DelegacionMunicipio)
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.Direccion.DelegacionMunicipio, new { @class = "form-control", @id = "DelegacionMunicipio", @placeholder = "Ejemp: Alvaro Obregon", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.Direccion.DelegacionMunicipio, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.Direccion.Colonia)
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.Direccion.Colonia, new { @class = "form-control", @id = "Colonia", @placeholder = "Ejemp: La Presa", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.Direccion.Colonia, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.Direccion.Calle)
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.Direccion.Calle, new { @class = "form-control", @id = "Calle", @placeholder = "Ejemp: Calle 10", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.Direccion.Calle, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.Direccion.Numero)
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.Direccion.Numero, new { @class = "form-control", @id = "Numero", @placeholder = "Ejemp: MZ 2 LT 5", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.Direccion.Numero, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <input type="submit" value="Guardar" class="btn btn-success" />
+            @Html.ActionLink("Regresar", "GetAll", "Persona", htmlAttributes: new { @class = "btn btn-danger" })
+        </div>
+    </div>
+}

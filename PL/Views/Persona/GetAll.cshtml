@@ -1,0 +1,62 @@
+﻿@model ML.Persona
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Seleccione Agregar para registrar una persona</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 ">
+            @Html.ActionLink("Agregar", "Form", "Persona", htmlAttributes: new { @class = "btn btn-success" })
+        </div>
+        <br> <br />
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered table-responsive">
+                <thead class="thead-dark">
+                    <tr>
+                        <td>Editar</td>
+                        <td class="hidden">IdPersona</td>
+                        <td>Nombre Completo</td>
+                        <td>Fecha de Nacimiento </td>
+                        <td>Sexo</td>
+                        <td>Estado Nacimiento</td>
+                        <td>Telefono</td>
+                        <td>CURP</td>
+                        <td>Direccion Completa</td>
+                        <td>Eliminar</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (ML.Persona persona in Model.Personas)
+                    {
+                        <tr>
+                            <td class="text-center"><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Persona", new { IdPersona = persona.IdPersona })"></a></td>
+                            <td class="hidden">@persona.IdPersona</td>
+                            <td>@persona.Nombre @persona.PrimerApellido @persona.SegundoApellido</td>
+                            <td>@persona.FechaNacimiento</td>
+                            <td>@persona.Sexo</td>
+                            <td>@persona.EstadoNacimiento</td>
+                            <td>@persona.Telefono</td>
+                            <td>@persona.CURP</td>
+                            <td class="hidden">@persona.Direccion.IdDireccion</td>
+                            <td>@persona.Direccion.Calle @persona.Direccion.Numero @persona.Direccion.Colonia @persona.Direccion.DelegacionMunicipio @persona.Direccion.EstadoCiudad</td>
+                            <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-erase" href="@Url.Action("Delete", "Persona", new { IdPersona = persona.IdPersona })" onclick="return confirm('¿Estas seguro que deseas eliminar este registro?');"></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
